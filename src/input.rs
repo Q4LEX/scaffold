@@ -89,6 +89,7 @@ impl InputHelper {
                 let change = Change::from(&input.state);
                 let key_type = InputKeyType::Keyboard(input.scancode, input.virtual_keycode);
 
+                self.state.insert(InputKeyType::Keyboard(input.scancode, None), change);
                 self.state.insert(key_type, change);
                 self.add_event(InputEvent::KeyInput {
                     cursor_x,
